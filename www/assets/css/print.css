@@ -1,0 +1,57 @@
+* {
+	-webkit-print-color-adjust: exact; 
+ }
+
+button.btn.dt-button-2.buttons-collection.buttons-colvis {
+	display: none;
+}
+
+button.btn.dt-button-2.buttons-collection.buttons-page-length {
+	display: none;
+}
+
+h1 {
+	font-size: 3.5rem;
+}
+
+h5 {
+	font-size: 2rem;
+}
+
+span {
+	font-size: 1.5rem;
+}
+
+p {
+	font-size: 2.2rem;
+}
+
+.dr-cr-ledger tfoot {
+	display: table-row-group !important;
+}
+
+/*@media print{@page {size: A4  landscape}}*/
+
+
+.dataTables_length,
+.dataTables_filter,
+.paginate_button.previous,
+.paginate_button.next {
+	display: none;
+}
+
+
+.table th select, .table th input {
+	display: none;
+}
+
+.range_form {
+	display: none;
+}
+tr.save_amt{
+	background-color: black;
+}
+
+.detailed-control {
+	display: none;
+}

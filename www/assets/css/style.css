@@ -1,0 +1,95 @@
+body {
+	font-family: 'Roboto', sans-serif;
+	font-size: 0.85em;
+}
+
+.table thead th {
+	font-size: 0.85em;
+}
+
+.checkbox label,
+.radio label,
+label {
+	font-size: 0.85em;
+}
+
+.custom-file-control,
+.form-control {
+	font-size: 0.85em;
+	color: #000;
+}
+
+#call_details_modal .modal-dialog {
+	margin: 0;
+}
+
+#call_details_modal .modal-header {
+	background: #eee;
+	padding-bottom: 2em;
+}
+
+#call_details_modal .user-image {
+	position: absolute;
+	top: 0;
+	width: 7em;
+	height: 7em;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175) !important;
+	border-radius: 1em;
+}
+
+#call_details_modal .user-image img {
+	border-radius: 1em;
+}
+
+#call_details_modal .modal-body {
+	height: calc(var(--windowHeight) - 120px);
+}
+
+#call_details_modal .modal-footer {
+	border-top: 1px solid #eee;
+}
+
+.footer-loading {
+	position: fixed;
+	padding: 2em;
+	background: #f1f1f1;
+	box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175);
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 1em;
+}
+
+nav.side-nav {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 9999;
+	background: #4f536f;
+	height: 100%;
+	width: 78%;
+	color: #fff;
+}
+
+
+.close-nav {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 9999;
+	background: rgba(79, 83, 111, 0.5);
+	height: 100%;
+	width: 22%;
+	color: #fff;
+}
+
+nav.side-nav a {
+	color: #fff;
+	width: 100%;
+	display: block;
+	padding: 1em;
+	border-bottom: 1px solid #373a54;
+	cursor: pointer;
+}
