@@ -55,21 +55,38 @@ var app = {
 						var data = {
 							labels: [],
 							data: [],
+							call_times: [],
+							total_call_deration: [],
 							all_datas: []
 						};
 
-						var days = zubizi.getLastNDays();
+						var days = zubizi.getLastNDays().reverse();
 
 						for (i = 0; i < days.length; i++) {
 							var day = days[i];
 							var day_data = await getCallByDay(day);
 							data.labels.push(moment(day).format('dddd'));
 							data.data.push(day_data.length);
-							data.all_datas.push(day_data);
+							// data.all_datas.push(day_data);
+							
+							var call_times = 0;
+							var total_duration = 0;
+							if (day_data.length > 0) {
+								for (j = 0; j < day_data.length; j++) {
+									var duration = day_data[j].duration;
+									total_duration += +duration;
+								}
+								if (total_duration > 60) {
+									var call_minute = (total_duration / 60).toFixed(0);
+									call_times = call_minute + '.' + total_duration % 60;
+								}
+							}
+							data.total_call_deration.push(total_duration);
+							data.call_times.push(call_times);
 						}
 
 						setChart(data);
-						// $('.status').html('<pre>' + JSON.stringify(data, null, '\t') + '</pre>');
+						$('.status').html('<pre>' + JSON.stringify(data, null, '\t') + '</pre>');
 
 						$('.footer-loading').fadeOut();
 					}, 500);
@@ -81,19 +98,21 @@ var app = {
 
 		function setChart(sendData) {
 			var days_chart = new Chart($('#last_7_days_calls'), {
-				type: 'line',
+				type: 'bar',
 				data: {
 					labels: sendData.labels,
 					datasets: [{
 						label: 'No of Calls',
 						data: sendData.data,
-						backgroundColor: [
-							'rgba(78, 115, 223, 0.2)'
-						],
-						borderColor: [
-							'rgba(78, 115, 223, 1)',
-						],
-						borderWidth: 1
+						backgroundColor: 'rgba(78, 115, 223, 0)',
+						borderColor: 'rgba(78, 115, 223, 1)',
+						borderWidth: 1.5,
+						type: 'line'
+					}, {
+						label: 'Call Duration',
+						data: sendData.call_times,
+						backgroundColor: 'rgba(0, 0, 0, 0.2)',
+						borderColor: 'rgba(0, 0, 0, 1)'
 					}]
 				},
 				options: {

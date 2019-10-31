@@ -19,35 +19,38 @@ label {
 	color: #000;
 }
 
-#call_details_modal .modal-dialog {
+.user_details_modal .modal-dialog {
 	margin: 0;
 }
 
-#call_details_modal .modal-header {
-	background: #eee;
-	padding-bottom: 2em;
+.user_details_modal .modal-header {
+	background: #f1f1f1;
+	padding-bottom: 3em;
+	padding-top: 3em;
 }
 
-#call_details_modal .user-image {
+.user_details_modal .user-image {
 	position: absolute;
-	top: 0;
+	top: 7.5em;
 	width: 7em;
 	height: 7em;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175) !important;
 	border-radius: 1em;
+	z-index: 99;
 }
 
-#call_details_modal .user-image img {
+.user_details_modal .user-image img {
 	border-radius: 1em;
 }
 
-#call_details_modal .modal-body {
+.user_details_modal .modal-body {
 	height: calc(var(--windowHeight) - 120px);
+	overflow: auto;
 }
 
-#call_details_modal .modal-footer {
+.user_details_modal .modal-footer {
 	border-top: 1px solid #eee;
 }
 

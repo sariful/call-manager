@@ -18,7 +18,7 @@ var app = {
 		$('#start_date').val(moment().format('YYYY-MM-DD'));
 		$('#end_date').val(moment().add(1, 'days').format('YYYY-MM-DD'));
 
-		var calls_table = $('.calls-table').DataTable({
+		var data_table = $('.calls-table').DataTable({
 			data: [],
 			columns: [{
 					data: "thumbPhoto",
@@ -46,7 +46,8 @@ var app = {
 				{
 					className: "small",
 					data: {
-						_: "duration",
+						_: "duration_actual",
+						sort: "duration_actual",
 						display: function (data) {
 							return data.duration;
 						}
@@ -56,7 +57,7 @@ var app = {
 		});
 
 		$('.calls-table').on('click', 'tbody tr', function (e) {
-			var rowData = calls_table.row($(this)).data();
+			var rowData = data_table.row($(this)).data();
 			if (!rowData) {
 				rowData = {};
 			}
@@ -65,8 +66,8 @@ var app = {
 				var html = template(rowData);
 				$('.call-details-placeholder').html(html);
 				$('#call_details_modal').modal('toggle');
-				$('#call_details_modal .modal-body').css('height', window.innerHeight - 139);
-				$('#call_details_modal .modal-body').css('max-height', window.innerHeight - 139);
+				$('#call_details_modal .modal-body').css('height', window.innerHeight - 171);
+				$('#call_details_modal .modal-body').css('max-height', window.innerHeight - 171);
 			});
 		});
 
@@ -111,7 +112,7 @@ var app = {
 						
 						return obj;
 					});
-					calls_table.clear().rows.add(data).draw();
+					data_table.clear().rows.add(data).draw();
 					// $('.status').html('<pre>' + JSON.stringify(data, null, '\t') + '</pre>');
 					$('.footer-loading').fadeOut();
 				}, function (error) {
