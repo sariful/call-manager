@@ -68,7 +68,7 @@ var app = {
 							data.labels.push(moment(day).format('dddd'));
 							data.data.push(day_data.length);
 							// data.all_datas.push(day_data);
-							
+
 							var call_times = 0;
 							var total_duration = 0;
 							if (day_data.length > 0) {
@@ -106,13 +106,14 @@ var app = {
 						data: sendData.data,
 						backgroundColor: 'rgba(78, 115, 223, 0)',
 						borderColor: 'rgba(78, 115, 223, 1)',
-						borderWidth: 1.5,
+						borderWidth: 2,
 						type: 'line'
 					}, {
 						label: 'Call Duration',
 						data: sendData.call_times,
-						backgroundColor: 'rgba(0, 0, 0, 0.2)',
-						borderColor: 'rgba(0, 0, 0, 1)'
+						backgroundColor: 'rgba(227, 227, 227)',
+						borderColor: 'rgba(227, 227, 227)',
+						borderWidth: 2,
 					}]
 				},
 				options: {
@@ -132,13 +133,26 @@ var app = {
 					},
 					elements: {
 						line: {
-							tension: 0.1,
+							tension: 0.25,
 						}
 					},
 					scales: {
 						yAxes: [{
 							ticks: {
-								beginAtZero: true
+								beginAtZero: true,
+								display: false,
+							},
+							gridLines: {
+								drawBorder: false,
+								display: false
+							}
+						}],
+						xAxes: [{
+							ticks: {
+								fontSize: 8
+							},
+							gridLines: {
+								display: false
 							}
 						}]
 					}

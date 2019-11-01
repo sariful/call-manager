@@ -9,17 +9,24 @@
     },
     "author": "Sariful Islam",
     "dependencies": {
+        "call-number": "^1.0.1",
         "cordova-android": "^8.1.0",
         "cordova-browser": "^6.0.0",
+        "cordova-call": "^1.1.6",
+        "cordova-plugin-android-permissions": "^1.0.2",
         "cordova-plugin-calllog": "^1.3.2",
         "cordova-plugin-contacts-phonenumbers": "0.0.12",
-        "cordova-plugin-whitelist": "^1.3.4"
+        "cordova-plugin-whitelist": "^1.3.4",
+        "save": "^2.4.0"
     },
     "cordova": {
         "plugins": {
             "cordova-plugin-whitelist": {},
             "cordova-plugin-calllog": {},
-            "cordova-plugin-contacts-phonenumbers": {}
+            "cordova-plugin-contacts-phonenumbers": {},
+            "cordova-call": {},
+            "cordova-plugin-android-permissions": {},
+            "mx.ferreyra.callnumber": {}
         },
         "platforms": [
             "android",

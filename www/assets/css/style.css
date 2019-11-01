@@ -13,6 +13,30 @@ label {
 	font-size: 0.85em;
 }
 
+.dashboard-card {
+	border-radius: 5px;
+}
+
+.shadow {
+	box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+}
+
+.shadow-sm {
+	box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+}
+
+.shadow-lg {
+	box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175) !important;
+}
+
+.shadow-none {
+	box-shadow: none !important;
+}
+
+.rounded {
+	border-radius: .25rem !important;
+}
+
 .custom-file-control,
 .form-control {
 	font-size: 0.85em;

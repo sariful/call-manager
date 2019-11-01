@@ -23,14 +23,15 @@
 			<nav class="navbar navbar-dark bg-primary">
 				<!-- Navbar content -->
 				<a href="javascript:;" class="h6 mb-0"><i class="fa fa-bars text-light show-sidenav"></i></a>
-				<img src="assets/img/logo.png" width="30" height="30" alt="" class="bg-light p-1 rounded float-right">
+				<img src="assets/img/logo.png" width="30" height="30" alt="" class="bg-light p-1 rounded float-right"
+					data-toggle="collapse" href="#codes" role="button" aria-expanded="false" aria-controls="codes">
 			</nav>
 			<div class="sidenav-wrapper nav-wrapper" style="display: none;">
 				<nav class="side-nav">
 					<ul class="list-unstyled">
 						<li><a href="#">&nbsp;</a></li>
 						<li><a href="contact.html">Contacts</a></li>
-						<li><a href="dashbaord.html">Dashbaord</a></li>
+						<li><a href="dashboard.html">Dashboard</a></li>
 						<li><a href="index.html">Call History</a></li>
 					</ul>
 				</nav>
@@ -42,10 +43,13 @@
 			</div>
 		</header>
 		<div class="content">
-			<div><canvas id="last_7_days_calls" width="600" height="300"></canvas></div>
+			<div class="container">
+				<div class="shadow-sm rounded mt-3 pb-2 pr-2"><canvas id="last_7_days_calls" width="600"
+						height="300"></canvas></div>
+			</div>
 			<div class="p-4">
-				<button class="btn btn-primary" data-toggle="collapse" href="#codes" role="button" aria-expanded="false"
-					aria-controls="codes">Codes</button>
+				<!-- <button class="btn btn-primary" data-toggle="collapse" href="#codes" role="button" aria-expanded="false"
+					aria-controls="codes">Codes</button> -->
 				<div class="status collapse" id="codes">1</div>
 			</div>
 		</div>

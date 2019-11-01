@@ -2,7 +2,7 @@
 	"use strict"; // Start of use strict
 
 	// $(':root').css('--windowHeight', window.innerHeight);
-    $(':root').css("--windowHeight", window.innerHeight);
+	$(':root').css("--windowHeight", window.innerHeight);
 
 	if ($.isFunction($.fn.dataTable)) {
 		$.extend(true, $.fn.dataTable.defaults, {
@@ -46,6 +46,29 @@
 	}
 	// PNotify.prototype.options.styling = "bootstrap4";
 	// PNotify.prototype.options.styling = "fontawesome";
+
+	$('body').on('click', '[data-toggle="make_call"]', function (e) {
+		e.preventDefault();
+		$('.status').prepend('clicked call </br>');
+		var number = $(this).data('number');
+		if (number > 0) {
+
+			zubizi.checkPermission('CALL_PHONE').then(function (data) {
+				$('.status').prepend('calling: ' + number + ' </br>');
+				window.plugins.CallNumber.callNumber(function (result) {
+					$('.status').prepend('Call Made To ' + number + ': <pre>' + JSON.stringify(result, null, '\t') + '</pre>');
+				}, function (error) {
+					alert('Cannot Make Call');
+					$('.status').prepend('Error calling To ' + number + ': <pre>' + JSON.stringify(error, null, '\t') + '</pre>');
+				}, number);
+			});
+			
+			
+		} else {
+			console.log('no number');
+			$('.status').prepend('No Number: ' + number + ' </br>');
+		}
+	});
 
 	$('body').popover({
 		selector: '[data-toggle="popover"]',
