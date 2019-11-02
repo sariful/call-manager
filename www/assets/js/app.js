@@ -51,7 +51,7 @@
 		e.preventDefault();
 		$('.status').prepend('clicked call </br>');
 		var number = $(this).data('number');
-		if (number > 0) {
+		if (number != '') {
 
 			zubizi.checkPermission('CALL_PHONE').then(function (data) {
 				$('.status').prepend('calling: ' + number + ' </br>');

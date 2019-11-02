@@ -26,4 +26,6 @@
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <plugin name="cordova-plugin-calllog" spec="~1.2.2" />
     <plugin name="cordova-plugin-contacts-phonenumbers" spec="~0.0.12" />
+    <engine name="android" spec="^8.1.0" />
+    <engine name="browser" spec="^6.0.0" />
 </widget>

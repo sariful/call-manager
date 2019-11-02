@@ -528,22 +528,39 @@ var zubizi = {
 				var permissions = cordova.plugins.permissions;
 				permissions.hasPermission(permissions[the_permission], function (status) {
 					if (status.hasPermission) {
-						resolve("Already Permitted");
+						resolve({
+							status: true,
+							message: "Already Permitted"
+						});
 					} else {
 						permissions.requestPermission(permissions[the_permission], function (status) {
 							if (!status.hasPermission) {
 								alert('Permission denied');
+								resolve({
+									status: false,
+									message: "Permission Denied 1"
+								});
 							} else {
-								resolve('Permitted');
+								resolve({
+									status: true,
+									message: "Permitted"
+								});
 							}
 						}, function () {
-							resolve('Permission denied');
 							alert('Permission denied');
+							resolve({
+								status: false,
+								message: "Permission Denied 2"
+							});
 						});
 					}
 				});
 			} catch (error) {
 				alert(error);
+				resolve({
+					status: false,
+					message: "Unexpected error: <pre>"+ error +"</pre>"
+				});
 			}
 		});
 	}
