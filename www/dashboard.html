@@ -18,7 +18,7 @@
 </head>
 
 <body>
-	<div class="app">
+	<div class="app bg-light">
 		<header>
 			<nav class="navbar navbar-dark bg-primary">
 				<!-- Navbar content -->
@@ -42,13 +42,36 @@
 				</div>
 			</div>
 		</header>
-		<div class="content">
+		<div class="content pt-2">
 			<div class="container">
-				<div class="shadow rounded mt-3 pb-2 pr-2"><canvas id="last_7_days_calls" width="600"
-						height="300"></canvas></div>
-
-				<div class="shadow rounded mt-3 pb-2 pr-2"><canvas id="call_type_chart" width="600"
-						height="300"></canvas></div>
+				<div>
+					<h6 class="font-weight-bold">Today Summery:</h6>
+					<div class="d-flex">
+						<div class="shadow w-50 p-4 flex-fill mr-3 bg-white rounded">
+							Total Calls:
+							<div class="h4 font-weight-bold text-muted today_total_calls m-0">0</div>
+						</div>
+						<div class="shadow w-50 p-4 flex-fill bg-white rounded">
+							Duration:
+							<div class="h4 font-weight-bold text-muted today_total_call_duration m-0">
+								00:00
+								<small>Min</small>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="mt-3">
+					<div class="shadow rounded bg-white pb-2 pr-2">
+						<h6 class="font-weight-bold text-center m-0 pt-3">Weekly Summery</h6>
+						<canvas id="last_7_days_calls" width="600" height="200"></canvas>
+					</div>
+				</div>
+				<div class="mt-3">
+					<div class="shadow rounded bg-white pb-2 pr-2">
+						<h6 class="font-weight-bold text-center m-0 pt-3">Today Calls</h6>
+						<canvas id="call_type_chart" width="600" height="300"></canvas>
+					</div>
+				</div>
 			</div>
 			<div class="p-4">
 				<!-- <button class="btn btn-primary" data-toggle="collapse" href="#codes" role="button" aria-expanded="false"
@@ -72,6 +95,7 @@
 	<script type="text/javascript" src="assets/libs/js/handlebars.min.js"></script>
 	<script type="text/javascript" src="assets/libs/js/fontawesome.min.js"></script>
 	<script type="text/javascript" src="assets/libs/js/Chart.min.js"></script>
+	<script type="text/javascript" src="assets/libs/js/lodash.min.js"></script>
 	<script type="text/javascript" src="assets/js/app.js"></script>
 	<script type="text/javascript" src="assets/js/app.obj.js"></script>
 	<script type="text/javascript" src="assets/js/dashboard.js"></script>

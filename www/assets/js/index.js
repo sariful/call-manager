@@ -21,13 +21,15 @@ var app = {
 		var data_table = $('.calls-table').DataTable({
 			data: [],
 			columns: [{
+					className: "user-image",
 					data: "thumbPhoto",
 					render: function (data) {
-						return '<img src="' + data + '" class="img-fluid rounded-circle" width="30"/>';
+						return '<img src="' + data + '" class="img-fluid rounded-circle" width="25"/>';
 					}
 				},
 				{
 					data: null,
+					className: "user-name",
 					render: function (data) {
 						if (data.name) {
 							return data.name;
@@ -37,14 +39,18 @@ var app = {
 					}
 				},
 				{
+					className: "small call-date-time",
 					data: {
 						_: "date_format",
 						sort: "date",
-						display: "date_format"
+						display: function (data) {
+							return '<span class="text-muted small">' + moment(data.date, 'x').format('DD/MM/YY') + '</span>&nbsp;&nbsp;' +
+								'<span class="small">' + moment(data.date, 'x').format('hh:mm:ss a') + '</span>';
+						}
 					}
 				},
 				{
-					className: "small",
+					className: "small call-duration",
 					data: {
 						_: "duration_actual",
 						sort: "duration_actual",
@@ -97,19 +103,31 @@ var app = {
 			setTimeout(() => {
 				window.plugins.callLog.getCallLog(filters, function (call_data) {
 					var data = call_data.map(function (obj) {
+						if (!obj.thumbPhoto) {
+							obj.thumbPhoto = 'assets/img/user.png';
+						} else {
+							if (obj.thumbPhoto == '') {
+								obj.thumbPhoto = 'assets/img/user.png';
+							}
+						}
+
 						if (!obj.photo) {
 							obj.photo = 'assets/img/user.png';
+						} else {
+							if (obj.photo == '') {
+								obj.photo = 'assets/img/user.png';
+							}
 						}
 						obj.date_format = moment(obj.date, 'x').format('DD/MM/YY hh:mm:ss a');
-						
+
 						obj.duration_actual = obj.duration;
 						if (obj.duration >= 60) {
 							var duration_min = (obj.duration_actual / 60).toFixed(0);
-							obj.duration = duration_min + ' Min '  + (obj.duration_actual%60) + ' Sec';
+							obj.duration = duration_min + ' Min ' + (obj.duration_actual % 60) + ' Sec';
 						} else {
 							obj.duration = obj.duration + ' Sec';
 						}
-						
+
 						return obj;
 					});
 					data_table.clear().rows.add(data).draw();

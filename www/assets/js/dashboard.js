@@ -63,26 +63,51 @@ var app = {
 			return new Promise(function (resolve, reject) {
 				var day = moment().format('YYYY-MM-DD');
 				getCallByDay(day).then(function (call_data) {
+					var max_call_duration = _.maxBy(call_data, 'duration');
+
+					
+
 					var missed_call = 0;
 					var incoming_call = 0;
 					var outgoing_call = 0;
-					var unknown = 0;
-					// resolve(call_data);
 
+					var missed_call_text = '';
+					var incoming_call_text = '';
+					var outgoing_call_text = '';
+
+					var unknown = 0;
+					var today_total_calls = call_data.length;
+					var today_total_call_duration = 0;
+					// resolve(call_data);
+					
 					call_data.map(function (obj) {
-						if (obj.type == '1000') {
+						missed_call_text += obj.type + ', ';
+						var type_in_text = obj.type.toString();
+						var type_in_single_letter = type_in_text.substr(type_in_text.length - 1);
+						incoming_call_text += type_in_single_letter + ', ';
+						today_total_call_duration += obj.duration;
+						if (type_in_single_letter == '0') {
 							incoming_call++;
-						} else if (obj.type == '1001') {
+						} else if (type_in_single_letter == '1') {
 							outgoing_call++;
-						} else if (obj.type == '1002') {
+						} else if (type_in_single_letter == '2') {
 							missed_call++;
 						} else {
 							unknown++;
 						}
 					});
+					$('.status').prepend(missed_call_text + '<br>' + incoming_call_text);
 
+
+					$('.today_total_calls').html(today_total_calls);
+
+
+					var call_minute = (today_total_call_duration / 60).toFixed(0);
+					var call_duration = call_minute + ':' + (today_total_call_duration % 60) + ' <small>Min</small>';
+					$('.today_total_call_duration').html(call_duration);
+					
+					
 					var chart_data = [missed_call, incoming_call, outgoing_call, unknown];
-
 					var myDoughnutChart = new Chart($('#call_type_chart'), {
 						type: 'doughnut',
 						data: {
@@ -117,7 +142,7 @@ var app = {
 					data: [],
 					actual_call_count: [],
 					call_duration: [],
-					total_call_deration: [],
+					total_call_duration: [],
 					all_datas: []
 				};
 
@@ -147,7 +172,7 @@ var app = {
 						}
 					}
 					data.actual_call_count.push(daily_actual_call_count_total);
-					data.total_call_deration.push(total_duration);
+					data.total_call_duration.push(total_duration);
 					data.call_duration.push(call_duration);
 				}
 

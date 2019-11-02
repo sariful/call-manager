@@ -1,17 +1,63 @@
 body {
 	font-family: 'Roboto', sans-serif;
-	font-size: 0.85em;
-}
-
-.table thead th {
-	font-size: 0.85em;
+	font-size: 0.9em;
 }
 
 .checkbox label,
 .radio label,
 label {
-	font-size: 0.85em;
+	font-size: 0.9em;
 }
+
+
+.table thead th {
+	font-size: 0.9em;
+}
+
+table.calls-table td {
+	display: inline-block;
+	position: relative;
+	padding: 8px;
+	border: 0;
+}
+
+table.calls-table tr {
+	display: block;
+	position: relative;
+	margin: 0.5em 0;
+	box-shadow: 0.02em 0.06rem 0.15rem rgba(0, 0, 0, .2);
+	border-radius: 3px;
+}
+
+td.user-image {
+	position: absolute;
+	width: 2.5em;
+	height: 2.5em;
+}
+
+.user-image img {
+	width: 100%;
+}
+
+td.call-date-time {
+	display: block !important;
+	position: absolute !important;
+	bottom: 0.5em;
+	left: 5.32em;
+	padding: 0 !important;
+}
+
+td.call-duration {
+	position: absolute !important;
+	right: 1em;
+	bottom: 0.5em;
+	padding: 0 !important;
+}
+
+td.user-name {
+	display: block;
+}
+
 
 .dashboard-card {
 	border-radius: 5px;
