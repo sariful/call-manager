@@ -227,7 +227,7 @@ var app = {
 					},
 					tooltips: {
 						mode: 'index',
-						intersect: false
+						intersect: true
 					},
 					elements: {
 						line: {

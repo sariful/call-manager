@@ -7,7 +7,7 @@
     <author email="me@sarifulislam.com" href="https://zubizi.com">
         Zubizi Web Solutions
 	</author>
-    <content src="dashboard.html" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -18,6 +18,20 @@
     <platform name="android">
         <icon src="res/icons/icon.png" />
         <allow-intent href="market:*" />
+
+        <!-- you can use any density that exists in the Android project -->
+        <splash src="res/screen/mdpi.png" density="land-hdpi"/>
+        <splash src="res/screen/mdpi.png" density="land-ldpi"/>
+        <splash src="res/screen/mdpi.png" density="land-mdpi"/>
+        <splash src="res/screen/mdpi.png" density="land-xhdpi"/>
+        <splash src="res/screen/mdpi.png" density="land-xxhdpi"/>
+
+        <splash src="res/screen/mdpi.png" density="port-hdpi"/>
+        <splash src="res/screen/mdpi.png" density="port-ldpi"/>
+        <splash src="res/screen/mdpi.png" density="port-mdpi"/>
+        <splash src="res/screen/mdpi.png" density="port-xhdpi"/>
+        <splash src="res/screen/mdpi.png" density="port-xxhdpi"/>
+        
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />

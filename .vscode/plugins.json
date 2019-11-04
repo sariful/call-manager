@@ -1,1 +1,1 @@
-{"plugins":["cordova-plugin-whitelist","cordova-plugin-calllog","cordova-plugin-contacts-phonenumbers","cordova-call","cordova-plugin-android-permissions","call-number"]}
+{"plugins":["cordova-plugin-whitelist","cordova-plugin-calllog","cordova-plugin-contacts-phonenumbers","cordova-call","cordova-plugin-android-permissions","call-number","cordova-plugin-splashscreen"]}

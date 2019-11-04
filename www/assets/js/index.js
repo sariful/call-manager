@@ -39,6 +39,22 @@ var app = {
 					}
 				},
 				{
+					className: "call-type",
+					data: {
+						_: "call_type_number",
+						display: function (data) {
+							if (data.call_type_number == '0') {
+								return '<i class="fa fa-long-arrow-alt-left incoming-icon-rotate sign-in-alt  small text-success"></i>';
+							} else if (data.call_type_number == '1') {
+								return '<i class="fa fa-long-arrow-alt-left  outgoing-icon-rotate  small text-info"></i>';
+							} else if (data.call_type_number == '2') {
+								return '<i class="fa fa-external-link-alt small text-danger"></i>';
+							}
+							return data.call_type_number;
+						}
+					},
+				},
+				{
 					className: "small call-date-time",
 					data: {
 						_: "date_format",
@@ -118,6 +134,12 @@ var app = {
 								obj.photo = 'assets/img/user.png';
 							}
 						}
+
+
+
+						var type_in_text = obj.type.toString();
+						obj.call_type_number = type_in_text.substr(type_in_text.length - 1);
+
 						obj.date_format = moment(obj.date, 'x').format('DD/MM/YY hh:mm:ss a');
 
 						obj.duration_actual = obj.duration;
