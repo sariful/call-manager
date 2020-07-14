@@ -65,6 +65,7 @@ var app = {
 				getCallByDay(day).then(function (call_data) {
 					var max_call_duration = _.maxBy(call_data, 'duration');
 
+					console.log(call_data);
 					
 
 					var missed_call = 0;
@@ -81,16 +82,18 @@ var app = {
 					// resolve(call_data);
 					
 					call_data.map(function (obj) {
-						missed_call_text += obj.type + ', ';
-						var type_in_text = obj.type.toString();
-						var type_in_single_letter = type_in_text.substr(type_in_text.length - 1);
-						incoming_call_text += type_in_single_letter + ', ';
+						// var type_in_text = obj.type.toString();
+						obj.call_type_number = obj.type.toString().substr(obj.type.toString().length - 1);
+
+						missed_call_text += obj.call_type_number + ', ';
+						incoming_call_text += obj.call_type_number + ', ';
 						today_total_call_duration += obj.duration;
-						if (type_in_single_letter == '0') {
+						
+						if (obj.call_type_number == '1') {
 							incoming_call++;
-						} else if (type_in_single_letter == '1') {
+						} else if (obj.call_type_number == '2') {
 							outgoing_call++;
-						} else if (type_in_single_letter == '2') {
+						} else if (obj.call_type_number == '3') {
 							missed_call++;
 						} else {
 							unknown++;

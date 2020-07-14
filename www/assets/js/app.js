@@ -62,28 +62,25 @@
 					$('.status').prepend('Error calling To ' + number + ': <pre>' + JSON.stringify(error, null, '\t') + '</pre>');
 				}, number);
 			});
-			
-			
+
+
 		} else {
 			console.log('no number');
 			$('.status').prepend('No Number: ' + number + ' </br>');
 		}
 	});
 
-	$('body').popover({
-		selector: '[data-toggle="popover"]',
-		html: true
-	});
-	$('body').tooltip({
-		selector: '[data-toggle="tooltip"]'
+	$('body').on('click', '.menu-link', function (e) {
+		e.preventDefault();
+		var location_href = $(this).data('href');
+		if (location_href != '') {
+			location.href = location_href;
+		}
 	});
 
-	$('body').on('click', '.show-sidenav', function (e) {
-		e.preventDefault();
-		$('.sidenav-wrapper').fadeIn();
-	});
-	$('body').on('click', '.close-nav', function (e) {
-		e.preventDefault();
-		$('.sidenav-wrapper').fadeOut();
-	});
 })();
+document.addEventListener('deviceready', function () {
+	console.log('cordova.plugins.CordovaCall is now available');
+	var cordovaCall = cordova.plugins.CordovaCall; //not necessary, but might be more convenient
+	// cordova.plugins.CordovaCall.receiveCall('Sk Saif');
+});

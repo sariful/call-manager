@@ -31,8 +31,8 @@ var app = {
 					data: null,
 					className: "user-name",
 					render: function (data) {
-						if (data.name) {
-							return data.name;
+						if (data.cachedName) {
+							return data.cachedName;
 						} else {
 							return data.number;
 						}
@@ -153,6 +153,8 @@ var app = {
 						return obj;
 					});
 					data_table.clear().rows.add(data).draw();
+					console.log(data);
+					
 					// $('.status').html('<pre>' + JSON.stringify(data, null, '\t') + '</pre>');
 					$('.footer-loading').fadeOut();
 				}, function (error) {
